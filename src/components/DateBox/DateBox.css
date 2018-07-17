@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  margin: .5em;
+  justify-content: center;
+  align-items: center;
+}
+
+.day {
+  font-size: .8em;
+}
+
+.date {
+  margin-top: -5px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.weekend {
+  color: #ad3333;
+}

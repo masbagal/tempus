@@ -6,6 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build:dev": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
     "build:prod": "webpack --mode production"
   },
   "repository": "https://github.com/electron/electron-quick-start",
@@ -23,6 +24,7 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^1.0.0",
     "electron": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
@@ -31,6 +33,9 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
+    "electron-positioner": "^3.0.1",
+    "mini.css": "^3.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   }
