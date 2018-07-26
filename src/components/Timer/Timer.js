@@ -1,7 +1,11 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { connect } from "redux-zero/react";
+
+import actions from '../../state-management/actions';
 import style from './Timer.css';
 
-export default class Timer extends React.Component {
+class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,12 +25,31 @@ export default class Timer extends React.Component {
   }
 
   render() {
+    const classNames= {
+      enter: style.timerEnter,
+      enterActive: style.timerEnterActive,
+      exit: style.timerExit,
+      exitActive: style.timerExitActive,
+    }
+
     return (
-      <div className={style.timer}>
-        <div className={style.time}>
-          01:23:{this.prependZero(this.state.seconds)}
+      <CSSTransition 
+        classNames={classNames}
+        in={this.props.isTimerActive}
+        timeout={250}
+        unmountOnExit
+        mountOnEnter
+      >
+        <div className={style.timer}>
+          <div className={style.time}>
+            00:00:{this.prependZero(this.state.seconds)}
+          </div>
         </div>
-      </div>
+      </CSSTransition>
     )
   }
 }
+
+const mapStateToProps = ({ isTimerActive }) => ({ isTimerActive })
+
+export default connect(mapStateToProps, actions)(Timer)

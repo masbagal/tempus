@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@babel/runtime@^7.0.0-beta.42":
+  version "7.0.0-beta.54"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.0.0-beta.54.tgz#39ebb42723fe7ca4b3e1b00e967e80138d47cadf"
+  dependencies:
+    core-js "^2.5.7"
+    regenerator-runtime "^0.12.0"
+
 "@types/node@^8.0.24":
   version "8.10.21"
   resolved "https://registry.npmjs.org/@types/node/-/node-8.10.21.tgz#12b3f2359b27aa05a45d886c8ba1eb8d1a77e285"
@@ -1322,7 +1329,7 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.npmjs.org/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
-core-js@^2.4.0, core-js@^2.5.0:
+core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.7:
   version "2.5.7"
   resolved "https://registry.npmjs.org/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
@@ -1542,6 +1549,10 @@ dom-converter@~0.1:
   resolved "https://registry.npmjs.org/dom-converter/-/dom-converter-0.1.4.tgz#a45ef5727b890c9bffe6d7c876e7b19cb0e17f3b"
   dependencies:
     utila "~0.3"
+
+dom-helpers@^3.2.1, dom-helpers@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.npmjs.org/dom-helpers/-/dom-helpers-3.3.1.tgz#fc1a4e15ffdf60ddde03a480a9c0fece821dd4a6"
 
 dom-serializer@0:
   version "0.1.0"
@@ -1831,7 +1842,7 @@ fastparse@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
 
-fbjs@^0.8.16:
+fbjs@^0.8.16, fbjs@^0.8.4:
   version "0.8.17"
   resolved "https://registry.npmjs.org/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   dependencies:
@@ -2519,6 +2530,10 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.2.3"
     verror "1.10.0"
+
+keycode@^2.1.7:
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/keycode/-/keycode-2.2.0.tgz#3d0af56dc7b8b8e5cba8d0a97f107204eec22b04"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -3282,7 +3297,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.6.0:
+prop-types@^15.5.4, prop-types@^15.6.0, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -3377,6 +3392,56 @@ react-dom@^16.4.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-event-listener@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.npmjs.org/react-event-listener/-/react-event-listener-0.6.1.tgz#41c7a80a66b398c27dd511e22712b02f3d4eccca"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.42"
+    prop-types "^15.6.0"
+    warning "^4.0.1"
+
+react-lifecycles-compat@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-swipeable-views-core@^0.12.14:
+  version "0.12.14"
+  resolved "https://registry.npmjs.org/react-swipeable-views-core/-/react-swipeable-views-core-0.12.14.tgz#65271fd18dd9b359e39392fe065a8067e0d7bfdb"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.42"
+    warning "^4.0.1"
+
+react-swipeable-views-utils@^0.12.14:
+  version "0.12.14"
+  resolved "https://registry.npmjs.org/react-swipeable-views-utils/-/react-swipeable-views-utils-0.12.14.tgz#7ba72ea8eff8149f2c50ed8abc6fb21d1e0de227"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.42"
+    fbjs "^0.8.4"
+    keycode "^2.1.7"
+    prop-types "^15.6.0"
+    react-event-listener "^0.6.0"
+    react-swipeable-views-core "^0.12.14"
+
+react-swipeable-views@^0.12.15:
+  version "0.12.15"
+  resolved "https://registry.npmjs.org/react-swipeable-views/-/react-swipeable-views-0.12.15.tgz#5af82d9cb2b2240c78cf74f4055002ecd14c90a2"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.42"
+    dom-helpers "^3.2.1"
+    prop-types "^15.5.4"
+    react-swipeable-views-core "^0.12.14"
+    react-swipeable-views-utils "^0.12.14"
+    warning "^4.0.1"
+
+react-transition-group@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.npmjs.org/react-transition-group/-/react-transition-group-2.4.0.tgz#1d9391fabfd82e016f26fabd1eec329dbd922b5a"
+  dependencies:
+    dom-helpers "^3.3.1"
+    loose-envify "^1.3.1"
+    prop-types "^15.6.2"
+    react-lifecycles-compat "^3.0.4"
+
 react@^16.4.1:
   version "16.4.1"
   resolved "https://registry.npmjs.org/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
@@ -3447,6 +3512,10 @@ redent@^1.0.0:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
 
+redux-zero@^4.12.0:
+  version "4.12.0"
+  resolved "https://registry.npmjs.org/redux-zero/-/redux-zero-4.12.0.tgz#88c22539d349e8c2b7cfd81ddab35323edda0eb2"
+
 regenerate@^1.2.1:
   version "1.4.0"
   resolved "https://registry.npmjs.org/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
@@ -3454,6 +3523,10 @@ regenerate@^1.2.1:
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+
+regenerator-runtime@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.12.0.tgz#8052ac952d85b10f3425192cd0c53f45cf65c6cb"
 
 regenerator-transform@^0.10.0:
   version "0.10.1"
@@ -4206,6 +4279,12 @@ vm-browserify@0.0.4:
   resolved "https://registry.npmjs.org/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   dependencies:
     indexof "0.0.1"
+
+warning@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/warning/-/warning-4.0.1.tgz#66ce376b7fbfe8a887c22bdf0e7349d73d397745"
+  dependencies:
+    loose-envify "^1.0.0"
 
 watchpack@^1.5.0:
   version "1.6.0"

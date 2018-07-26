@@ -1,10 +1,18 @@
 .container {
+  padding: 10px;
   display: flex;
   flex-direction: column;
   color: #fff;
-  margin: .5em;
+  margin: 10px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  width: 46px;
+  box-sizing: border-box;
+}
+
+.container:hover {
+  background: rgba(255,255,255,.3)
 }
 
 .day {
@@ -19,4 +27,8 @@
 
 .weekend {
   color: #ad3333;
+}
+
+.selected {
+  border: rgb(255, 186, 57) solid 1px;
 }

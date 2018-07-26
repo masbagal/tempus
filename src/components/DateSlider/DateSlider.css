@@ -1,0 +1,4 @@
+.dateSlider {
+  display: flex;
+  transition: ease .5s all;
+}

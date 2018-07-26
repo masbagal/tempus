@@ -1,34 +1,57 @@
+.container {
+  width: 100%;
+  text-align: center;
+  margin-left: 10%;
+  position: relative;
+}
+
 .timerForm {
-  margin: 0 auto;
-  background-color: #485461;
-  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  margin: -50px auto 40px auto;
+  background-color: #3a3f44;
+  background-image: linear-gradient(315deg, #3a3f44 0%, #28313b 74%);
   color: #fff;
   text-align: center;
-  padding: 20px 40px;
+  padding: 20px 40px 40px;
   box-sizing: border-box;
+  width: 80%;
+  float: left;
+  position: relative;
+  box-shadow: 0px 5px 10px rgba(0,0,0,.4);
 }
 
 .timerForm input {
   width: 100%;
   background: none;
   border: 0;
-  border-bottom: #666 solid 1px;
+  border-bottom: #1e5d80 solid 1px;
   color: #fff;
   font-size: 1.4em;
   text-align: center;
+  outline: none;
+  transition: .2s all ease;
+}
+
+.timerForm input:focus {
+  border-bottom: #1ba0e2 solid 3px;
 }
 
 .start {
-  margin-top: 1em;
-  color: #ddd;
+  margin-top: .6em;
+  color: #aaa;
+  font-size: .8em;
 }
 
 .button {
-  margin-top: 10px;
-  text-align: center;
-  background-color: #f1f2f6;
-  background-image: linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%);  
-  color: #8f8f8f;
+  border-radius: 50px;
+  padding: 10px 30px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,.6);
+}
+
+.endTask {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  transform: translate(-50%, 0);
 }
 
 .stop {
@@ -49,4 +72,24 @@
 
 .button:hover .stop {
   background: #ffffff;
+}
+
+.formEnter {
+  transform: translateY(30%);
+  opacity: 0;
+}
+
+.formEnterActive {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.formExit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.formExitActive {
+  transform: translateY(100%);
+  opacity: 0;
 }

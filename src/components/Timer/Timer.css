@@ -4,6 +4,7 @@
   background-image: linear-gradient(315deg, #f9c5d1 0%, #9795ef 74%);
   color: #fff;
   text-align: center;
+  height: 150px;
 }
 
 .time {
@@ -24,4 +25,26 @@
   100% {
     opacity: 0 
   }
+}
+
+.timerEnter {
+  height: 0;
+  opacity: 0;
+}
+
+.timerEnterActive {
+  height: 150px;
+  opacity: 1;
+  transition: .5s ease all;
+}
+
+.timerExit {
+  height: 150px;
+  opacity: 1;
+}
+
+.timerExitActive {
+  height: 0;
+  opacity: 1;
+  transition: .5s ease all;
 }
