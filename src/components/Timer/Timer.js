@@ -1,8 +1,7 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { connect } from "redux-zero/react";
+import { connect } from "react-redux";
 
-import actions from '../../state-management/actions';
 import style from './Timer.css';
 
 class Timer extends React.Component {
@@ -50,6 +49,6 @@ class Timer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ isTimerActive }) => ({ isTimerActive })
+const mapStateToProps = (state) => ({ isTimerActive: state.appState.timerActive })
 
-export default connect(mapStateToProps, actions)(Timer)
+export default connect(mapStateToProps)(Timer)

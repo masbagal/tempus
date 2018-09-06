@@ -1,13 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 import { CSSTransition } from 'react-transition-group';
-import { connect } from "redux-zero/react";
+import { connect } from "react-redux";
 
 import style from './Dashboard.css';
 
-import actions from '../../state-management/actions';
-
-import DateSlider from '../DateSlider/DateSlider';
+import DateDisplay from '../DateDisplay/DateDisplay';
 import StartButton from '../StartButton/StartButton';
 
 class Dashboard extends React.Component {
@@ -28,6 +26,7 @@ class Dashboard extends React.Component {
       exitActive: style.dashExitActive,
     }
 
+    const { timerActive } = this.props;
 
     return (
       <div className={style.container}>
@@ -39,7 +38,7 @@ class Dashboard extends React.Component {
           mountOnEnter
         >
           <div className={style.dashboard}>
-            <DateSlider />
+            <DateDisplay />
             <div className={style.totalHourContainer}>
               <div>Your total work hour(s):</div>
               <div className={style.totalHour}>
@@ -48,7 +47,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
         </CSSTransition>
-        <button className={cx(style.startCta, { [style.clicked]: this.props.isTimerActive})} onClick={this.btnClick}>
+        <button className={cx(style.startCta, { [style.clicked]: timerActive})} onClick={this.btnClick}>
           <span>Start New Task</span>
         </button>
       </div>
@@ -56,6 +55,9 @@ class Dashboard extends React.Component {
   }
 }
 
-const mapStateToProps = ({ isTimerActive }) => ({ isTimerActive })
+const mapStateToProps = state => ({ 
+  timerActive: state.appState.timerActive, 
+  timerRunning: state.appState.timerRunning, 
+})
 
-export default connect(mapStateToProps, actions)(Dashboard)
+export default connect(mapStateToProps)(Dashboard)
