@@ -24,6 +24,15 @@ module.exports = {
               sourceMap: true,
               minimize: true
             }
+          },
+        ]
+      },
+      {
+        test: /\.(woff|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
           }
         ]
       }

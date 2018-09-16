@@ -9,13 +9,13 @@ function changeAppState(currentState) {
 }
 
 export function startTask() { 
-  changeAppState(START_TASK);
+  return changeAppState(START_TASK);
 }
 
 export function endTimer() {
-  changeAppState(END_TIMER);
+  return changeAppState(END_TIMER);
 }
 
 export function endTask() {
-  changeAppState(END_TASK);
+  return changeAppState(END_TASK);
 }

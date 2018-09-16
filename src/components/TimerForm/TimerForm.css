@@ -6,7 +6,7 @@
 }
 
 .timerForm {
-  margin: -50px auto 40px auto;
+  margin: -50px auto 70px auto;
   background-color: #3a3f44;
   background-image: linear-gradient(315deg, #3a3f44 0%, #28313b 74%);
   color: #fff;
@@ -29,6 +29,7 @@
   text-align: center;
   outline: none;
   transition: .2s all ease;
+  padding: 5px;
 }
 
 .timerForm input:focus {

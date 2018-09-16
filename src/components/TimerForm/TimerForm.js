@@ -1,11 +1,17 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from "react-redux";
+
+import { endTask } from '../../state-management/actions/appStateActions';
+import Button from '../Button/Button';
 import style from './TimerForm.css';
+
+
 
 class TimerForm extends React.Component {
   stopTimer = () => {
-    this.props.stopTimer();
+    // TODO: save task to db
+    this.props.endTask();
   }
   
   render() {
@@ -15,11 +21,14 @@ class TimerForm extends React.Component {
       exit: style.formExit,
       exitActive: style.formExitActive,
     }
+
+    const { isTimerActive, isTimerRunning } = this.props;
+    const showTimerForm = isTimerActive && !isTimerRunning;
     
     return (
       <CSSTransition 
         classNames={classNames}
-        in={this.props.isTimerActive}
+        in={showTimerForm}
         timeout={300}
         unmountOnExit
         mountOnEnter
@@ -27,7 +36,7 @@ class TimerForm extends React.Component {
         <div className={style.container}>
           <div className={style.timerForm}>
             <div className={style.inputTitle}>
-              <input type='text' placeholder='Enter your task name here'  ></input>
+              <input type='text' placeholder='Enter your task name here'></input>
             </div>
             
             <div className={style.start}>
@@ -36,10 +45,9 @@ class TimerForm extends React.Component {
             </div>
 
             <div className={style.endTask}>
-              <button className={style.button} onClick={this.stopTimer}>
-                <span className={style.stop}></span>
-                End Task
-              </button>
+              <Button onClick={this.stopTimer}>
+                Save Task
+              </Button>
             </div>
           </div>
       </div>
@@ -48,6 +56,13 @@ class TimerForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ isTimerActive: state.appState.isTimerActive })
+const mapDispatchToProps = dispatch => ({
+  endTask: () => dispatch(endTask())
+})
 
-export default connect(mapStateToProps)(TimerForm)
+const mapStateToProps = state => ({ 
+  isTimerActive: state.appState.timerActive,
+  isTimerRunning: state.appState.timerRunning,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TimerForm)

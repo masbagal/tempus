@@ -21,6 +21,8 @@
 .title {
   font-weight: bold;
   font-size: 1em;
+  line-height: 1em; 
+  margin-bottom: .3em;
 } 
 
 .time {
