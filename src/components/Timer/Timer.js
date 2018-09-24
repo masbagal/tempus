@@ -1,11 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
+import dayjs from 'dayjs';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from "react-redux";
 
+import { convertSecondsToTimerFormat } from '../../helpers/TimeUtil';
 import { endTimer } from '../../state-management/actions/appStateActions';
 import Button, { COLOR } from '../Button/Button';
-import TimerForm from '../TimerForm/TimerForm';
 import style from './Timer.css';
 
 class Timer extends React.Component {
@@ -14,11 +15,6 @@ class Timer extends React.Component {
     this.state = {
       seconds: 0
     }  
-  }
-
-  prependZero = (number) => {
-    const textNumber = '' + number;
-    return textNumber.length < 2 ? `0${textNumber}` : textNumber;
   }
 
   timerTick = () => {
@@ -33,6 +29,10 @@ class Timer extends React.Component {
     }    
   }
 
+  componentWillUnmount() {
+    this.setState({ seconds: 0 });
+  }
+
   render() {
     const classNames= {
       enter: style.timerEnter,
@@ -42,6 +42,7 @@ class Timer extends React.Component {
     }
 
     const { isTimerActive, isTimerRunning } = this.props;
+    const displayedStartTime = dayjs(this.props.startTime).format('HH:mm');
 
     return (
       <CSSTransition 
@@ -52,8 +53,9 @@ class Timer extends React.Component {
         mountOnEnter
       >
         <div className={cx(style.timer, { [style.ends]: !isTimerRunning })}>
+          <div className={style.startsFrom}>Starts from: { displayedStartTime }</div>
           <div className={style.time}>
-            00:00:{this.prependZero(this.state.seconds)}
+            {convertSecondsToTimerFormat(this.state.seconds)}
           </div>
           <div className={style.ctaContainer}>
           {
@@ -66,7 +68,6 @@ class Timer extends React.Component {
             </Button>
           }
           </div>
-          
         </div>
       </CSSTransition>
     )
@@ -80,6 +81,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = (state) => ({ 
   isTimerActive: state.appState.timerActive, 
   isTimerRunning: state.appState.timerRunning,
+  startTime: state.appState.startTime,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timer)

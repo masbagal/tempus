@@ -1,4 +1,5 @@
 import React from 'react';
+import dayjs from 'dayjs';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from "react-redux";
 
@@ -9,9 +10,24 @@ import style from './TimerForm.css';
 
 
 class TimerForm extends React.Component {
+  state = {
+    taskName: ''
+  };
+
   stopTimer = () => {
-    // TODO: save task to db
+    const { startTime, endTime } = this.props;
+    this.props.db.addTask({
+      taskName: this.state.taskName,
+      startTime,
+      endTime,
+      duration: endTime - startTime,
+    });
     this.props.endTask();
+    this.setState({ taskName: '' });
+  }
+
+  handleInputChange = e => {
+    this.setState({ taskName: e.target.value });
   }
   
   render() {
@@ -24,6 +40,8 @@ class TimerForm extends React.Component {
 
     const { isTimerActive, isTimerRunning } = this.props;
     const showTimerForm = isTimerActive && !isTimerRunning;
+    const displayedStartTime = dayjs(this.props.startTime).format('HH:mm');
+    const displayedEndTime = dayjs(this.props.endTime).format('HH:mm');
     
     return (
       <CSSTransition 
@@ -36,12 +54,16 @@ class TimerForm extends React.Component {
         <div className={style.container}>
           <div className={style.timerForm}>
             <div className={style.inputTitle}>
-              <input type='text' placeholder='Enter your task name here'></input>
+              <input 
+                type='text' 
+                placeholder='Enter your task name here' 
+                onChange={this.handleInputChange}
+              />
             </div>
             
             <div className={style.start}>
-              Starts from: 
-              <span>14.23</span> 
+              Work time: 
+              <span>{displayedStartTime} - {displayedEndTime}</span> 
             </div>
 
             <div className={style.endTask}>
@@ -63,6 +85,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({ 
   isTimerActive: state.appState.timerActive,
   isTimerRunning: state.appState.timerRunning,
+  startTime: state.appState.startTime,
+  endTime: state.appState.endTime,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimerForm)

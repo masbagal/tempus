@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 
-// import reducers from './state-management/reducers';
+import DatabaseContext from './helpers/DatabaseContext';
+import TaskDatabase from './helpers/DatabaseClass';
 import appState from './state-management/reducers/appStateReducer';
 import TimerWindow from './window/TimerWindow';
 import './assets/base.css';
 
 const reducers = combineReducers({ appState })
+const taskDb = new TaskDatabase();
 
 const store = createStore(
   reducers,
@@ -17,7 +19,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <TimerWindow />
+    <DatabaseContext.Provider value={taskDb}>
+      <TimerWindow />
+    </DatabaseContext.Provider>
   </Provider>, 
   document.getElementById("index")
 );

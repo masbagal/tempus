@@ -8,8 +8,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   position: relative;
   transition: .1s ease-in all;
+}
+
+.startsFrom {
+  margin-bottom: 20px;
 }
 
 .time {

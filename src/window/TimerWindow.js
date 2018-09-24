@@ -1,4 +1,6 @@
 import React from 'react';
+
+import DatabaseContext from '../helpers/DatabaseContext';
 import Timer from '../components/Timer/Timer';
 import TimerForm from '../components/TimerForm/TimerForm';
 import Dashboard from '../components/Dashboard/Dashboard';
@@ -8,10 +10,19 @@ export default class TimerWindow extends React.Component {
   render() {
     return (
         <div style={{ position: 'relative' }}>
-          <Dashboard />
-          <Timer/>
-          <TimerForm />
-          <TaskList />
+          <DatabaseContext.Consumer>
+            {
+              db => (
+                <React.Fragment>
+                  <Dashboard />
+                  <Timer />
+                  <TimerForm db={db} />
+                  <TaskList />
+                </React.Fragment>
+              )
+            }
+            
+          </DatabaseContext.Consumer>
           
         </div>
     )
